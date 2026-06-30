@@ -8,6 +8,10 @@ const updateuser = document.getElementById('updateuser')
 const usercontainer = document.getElementById('usercontainer')
 const spinner = document.getElementById('spinner')
 const cl = console.log
+window.onedit = onedit;
+window.onremove = onremove;
+window.onupdate = onupdate;
+window.onsubmit = onsubmit;
 
 const api_call ="https://mansiusers.duckdns.org/users";
 
@@ -46,7 +50,7 @@ function makeapicall(methodname,api_call,body= null){
         resolve(res);
 
     } else {
-
+         spinner.classList.add('d-none')
         reject(xhr);
 
     }
@@ -59,7 +63,7 @@ function makeapicall(methodname,api_call,body= null){
     })
 }
 
-function fetch(){
+function loadUser(){
     makeapicall('GET',api_call)
     .then(res=>{
         create(res)
@@ -71,7 +75,7 @@ function fetch(){
         spinner.classList.add('d-none')
     })
 }
-fetch()
+loadUser()
 function create(arr){
     let result=''
     arr.forEach((u,i)=>{
@@ -81,8 +85,8 @@ function create(arr){
                                     <td> ${u.username}</td>
                                     <td> ${u.email}</td>
                                     <td> ${u.contact}</td>
-                                    <td><i class="fa-regular fa-pen-to-square" onclick="onedit('${u.id}')"></i></td>
-                                    <td><i class="fa-solid fa-trash" onclick="onremove('${u.id}')"></i></td>
+                                    <td><i class="fa-regular fa-pen-to-square" data-id="${u.id}"></i></td>
+                                    <td><i class="fa-solid fa-trash" data-id="${u.id}"></i></td>
                                 </tr>
     
     `
@@ -126,11 +130,11 @@ function createsingle(obj){
                               <td>${obj.contact}</td>
                               <td>
                               <i class="fa-regular fa-pen-to-square"
-                              onclick="onedit('${obj.id}')"></i>
+                               data-id="${obj.id}"></i>
                               </td>
                               <td>
                                   <i class="fa-solid fa-trash"
-                               onclick="onremove('${obj.id}')"></i>
+                              data-id="${obj.id}"></i>
                                  </td>
                                  
     
@@ -146,6 +150,7 @@ function updateSrNo() {
         row.children[0].innerHTML = index + 1;
     });
 }
+
 
 function onremove(id){
     let remove_id = id

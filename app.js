@@ -107,7 +107,7 @@ function onsubmit(eve){
   
     .then(res=>{
         new_obj.id=res.id
-        createsingle(new_obj)
+      loadUser()
         snackbar('New user added succefully','success')
    
     })
@@ -119,30 +119,7 @@ function onsubmit(eve){
     })
 }
 
-function createsingle(obj){
-    let srNo = usercontainer.children.length + 1;
-    let tr = document.createElement('tr')
-    tr.id=obj.id
-    tr.innerHTML= `
 
-                              <td>${srNo}</td>
-                              <td>${obj.username}</td>
-                              <td>${obj.email}</td>
-                              <td>${obj.contact}</td>
-                              <td>
-                              <i class="fa-regular fa-pen-to-square"
-                              onclick="onedit('${obj.id}')"></i>
-                              </td>
-                              <td>
-                                  <i class="fa-solid fa-trash"
-                               onclick="onremove('${obj.id}')"></i>
-                                 </td>
-                                 
-    
-    `
-    usercontainer.append(tr)
-    userform.reset()
-}
 
 function updateSrNo() {
     let rows = usercontainer.querySelectorAll("tr");

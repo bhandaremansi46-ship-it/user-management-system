@@ -9,7 +9,7 @@ const usercontainer = document.getElementById('usercontainer')
 const spinner = document.getElementById('spinner')
 const cl = console.log
 
-const api_call = "http://localhost:8080/users";
+const api_call = 'http://3.107.236.211:8080/users';
 
 function snackbar(msg,icon){
     Swal.fire({

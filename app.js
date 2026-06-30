@@ -108,6 +108,8 @@ function onsubmit(eve){
     .then(res=>{
         new_obj.id=res.id
       loadUser()
+      userform.reset()
+      
         snackbar('New user added succefully','success')
    
     })

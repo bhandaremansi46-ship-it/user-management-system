@@ -11,7 +11,7 @@ const cl = console.log
 window.onedit = onedit;
 window.onremove = onremove;
 window.onupdate = onupdate;
-window.onsubmit = onsubmit;
+
 
 const api_call ="https://mansiusers.duckdns.org/users";
 

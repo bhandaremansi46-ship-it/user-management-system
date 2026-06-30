@@ -50,8 +50,9 @@ function makeapicall(methodname,api_call,body= null){
         resolve(res);
 
     } else {
-         spinner.classList.add('d-none')
+
         reject(xhr);
+         spinner.classList.add('d-none')
 
     }
 
@@ -85,8 +86,8 @@ function create(arr){
                                     <td> ${u.username}</td>
                                     <td> ${u.email}</td>
                                     <td> ${u.contact}</td>
-                                    <td><i class="fa-regular fa-pen-to-square" data-id="${u.id}"></i></td>
-                                    <td><i class="fa-solid fa-trash" data-id="${u.id}"></i></td>
+                                    <td><i class="fa-regular fa-pen-to-square" onclick="onedit('${u.id}')"></i></td>
+                                    <td><i class="fa-solid fa-trash" onclick="onremove('${u.id}')"></i></td>
                                 </tr>
     
     `
@@ -130,11 +131,11 @@ function createsingle(obj){
                               <td>${obj.contact}</td>
                               <td>
                               <i class="fa-regular fa-pen-to-square"
-                               data-id="${obj.id}"></i>
+                              onclick="onedit('${obj.id}')"></i>
                               </td>
                               <td>
                                   <i class="fa-solid fa-trash"
-                              data-id="${obj.id}"></i>
+                               onclick="onremove('${obj.id}')"></i>
                                  </td>
                                  
     
